@@ -5,7 +5,7 @@
   "keywords": [
     "ember-addon"
   ],
-  "repository": "https://github.com/OAGAnalytics/ember-tus",
+  "repository": "https://github.com/OAGAnalytics/ember-cli-tus",
   "license": "MIT",
   "author": "Matt Marcum (https://github.com/mattmarcum)",
   "directories": {
