@@ -58,7 +58,7 @@ module.exports = function(environment) {
     ENV.rootURL = 'ADDON_DOCS_ROOT_URL';
     // here you can enable a production-specific feature
 
-    ENV.EmberTus.url = "https://master.tus.io//files/"
+    ENV.EmberTus.url = "https://master.tus.io/files/"
 
   }
 
