@@ -1,5 +1,5 @@
 {
-  "name": "ember-tus",
+  "name": "ember-cli-tus",
   "version": "0.0.1",
   "description": "Ember Addon for tus-js-client",
   "keywords": [
