@@ -7,7 +7,7 @@
   ],
   "repository": "https://github.com/OAGAnalytics/ember-tus",
   "license": "MIT",
-  "author": "",
+  "author": "Matt Marcum (https://github.com/mattmarcum)",
   "directories": {
     "doc": "doc",
     "test": "tests"
@@ -26,7 +26,7 @@
     "ember-auto-import": "^1.3.0",
     "ember-cli-babel": "^7.1.2",
     "ember-decorators-polyfill": "^1.0.4",
-    "esdoc-standard-plugin": "^1.0.0",
+    "ember-get-config": "^0.2.4",
     "tus-js-client": "^1.7.1"
   },
   "devDependencies": {
@@ -51,7 +51,6 @@
     "ember-cli-uglify": "^2.1.0",
     "ember-disable-prototype-extensions": "^1.1.3",
     "ember-export-application-global": "^2.0.0",
-    "ember-get-config": "^0.2.4",
     "ember-load-initializers": "^1.1.0",
     "ember-maybe-import-regenerator": "^0.1.6",
     "ember-qunit": "^3.4.1",
