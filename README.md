@@ -1,7 +1,8 @@
 ember-tus
 ==============================================================================
 
-[Short description of the addon.]
+An emberized wrapper for the tus.js client: https://github.com/tus/tus-js-client
+Based on the tus.io protocol: https://tus.io/
 
 
 Compatibility
