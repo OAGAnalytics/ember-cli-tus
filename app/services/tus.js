@@ -1,1 +1,1 @@
-export { default } from 'ember-tus/services/tus';
+export { default } from 'ember-cli-tus/services/tus';
