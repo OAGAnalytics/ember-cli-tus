@@ -71,7 +71,7 @@ export default class EmberTusUpload {
     if(isErrored) { return 'Error'; }
     if(isSuccess) { return 'Success'; }
     if(isStarted) { return 'In Progress'; }
-    return 'Unknown';
+    return 'Not Started';
   }
 
   @alias('tusUpload.file.name') fileName;
@@ -79,7 +79,7 @@ export default class EmberTusUpload {
 
   constructor(file) {
     if (!file) { return; }
-    
+
     let tusUpload = new Tus.Upload(file, {
         endpoint: config.EmberTus.url,
         metadata: {

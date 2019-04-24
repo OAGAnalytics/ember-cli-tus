@@ -5,9 +5,10 @@ import EmberTusUpload from 'ember-cli-tus/models/ember-tus-upload';
 module('Unit | Model | ember-tus-upload', function(hooks) {
   setupTest(hooks);
 
-  // Replace this with your real tests.
-  test('it exists', function(assert) {
-    let model = new EmberTusUpload;
-    assert.ok(model);
+  test('it sets up a tus object', function(assert) {
+    let model = new EmberTusUpload({ name: 'test.zip', size: 1000, type: 'zip'});
+    assert.equal(model.status, 'Not Started');
+    assert.equal(model.fileName, 'test.zip');
+    assert.equal(model.fileSize, 1000);
   });
 });
