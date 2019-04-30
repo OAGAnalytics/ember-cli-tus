@@ -26,3 +26,5 @@
 
 #docker
 /docker/
+
+/tus-uploads/

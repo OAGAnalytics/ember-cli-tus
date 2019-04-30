@@ -26,7 +26,7 @@ Addon-Docs:
 https://oaganalytics.github.io/ember-cli-tus/versions/master/
 
 Just add the `tus` service to any route/controller/component and pass browser `File`
-Objects to the `tus.addUpload` or `tus.startUpload` method.  Uploads are tracked on the
+Objects to the `tus.createUpload` or `tus.startNewUpload` method.  Uploads are tracked on the
 `tus.uploads` property.
 
 ```
@@ -40,7 +40,7 @@ export default class Index extends Controller {
 
   @action
   uploadFile(e) {
-    this.tus.startUpload(e.target.files[0]);
+    this.tus.startNewUpload(e.target.files[0]);
   }
 }
 ```

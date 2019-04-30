@@ -1,8 +1,8 @@
 import { module, test } from 'qunit';
 import { setupTest } from 'ember-qunit';
-import EmberTusUpload from 'ember-cli-tus/models/ember-tus-upload';
+import EmberTusUpload from 'ember-cli-tus/ember-tus-upload';
 
-module('Unit | Model | ember-tus-upload', function(hooks) {
+module('Unit | ember-tus-upload', function(hooks) {
   setupTest(hooks);
 
   test('it sets up a tus object', function(assert) {

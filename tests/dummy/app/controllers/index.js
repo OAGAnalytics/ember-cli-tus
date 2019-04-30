@@ -13,8 +13,8 @@ export default class Index extends Controller {
   }
 
   @action
-  uploadFile(e) {
-    this.tus.startUpload(e.target.files[0]);
+  uploadFile(emberFileUpload) {
+    this.tus.startNewEmberFileUpload(emberFileUpload);
   }
 }
 // END-SNIPPET

@@ -23,7 +23,8 @@ module.exports = function(environment) {
     },
 
     EmberTus: {
-      url: "http://localhost:1080/files/"
+      url: "http://localhost:1080/files/",
+      retryDelays: [0, 3000, 5000, 10000, 20000]
     }
   };
 

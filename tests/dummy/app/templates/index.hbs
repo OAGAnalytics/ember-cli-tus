@@ -4,7 +4,25 @@
   {{#docs-demo as |demo|}}
     {{#demo.example name="docs-demo-basic.hbs"}}
       <section>
-        Upload File: <input type="file" onchange={{action "uploadFile"}}>
+        {{#file-dropzone name="files" as |dropzone|}}
+          <div class="drop-zone-rect {{if dropzone.active "active"}}" >
+            <div class="drop-zone-content">
+              {{#if dropzone.active}}
+                <h3>Drop to upload</h3>
+              {{else}}
+                {{#if dropzone.supported}}
+                  Drag and drop files onto this area to upload them or
+                {{/if}}
+                {{#file-upload
+                  name="files"
+                  multiple=true
+                  onfileadd=(action "uploadFile")}}
+                  <a class="btn btn-primary btn-sm">{{fa-icon "file"}} Browse Files</a>
+                {{/file-upload}}
+              {{/if}}
+            </div>
+          </div>
+        {{/file-dropzone}}
       </section>
 
       <section>
@@ -42,6 +60,13 @@
           </tbody>
         </table>
       {{/if}}
+
+      <section>
+        Ember-File-Upload:File-Queue:Progress:
+        {{#with (file-queue) as |queue|}}
+          {{queue.progress}}%
+        {{/with}}
+      </section>
     {{/demo.example}}
 
     {{docs-snippet name="tus-controller.js"}}
