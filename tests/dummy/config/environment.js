@@ -22,7 +22,7 @@ module.exports = function(environment) {
       // when it is created
     },
 
-    EmberTus: {
+    'ember-cli-tus': {
       url: "http://localhost:1080/files/",
       retryDelays: [0, 3000, 5000, 10000, 20000]
     }

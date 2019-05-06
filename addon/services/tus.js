@@ -53,11 +53,12 @@ export default class TusService extends Service {
     @method startNewEmberFileUpload
     @public
     @param file {EmberFileUpload.File}
+    @param options {Object}
     @return {Promise}
   */
-  startNewEmberFileUpload(emberFileUpload) {
+  startNewEmberFileUpload(emberFileUpload, options) {
 
-    const options = {
+    const callbacks = {
       onprogress(evt) {
         setProperties(emberFileUpload, {
           loaded: evt.loaded,
@@ -67,10 +68,13 @@ export default class TusService extends Service {
       },
       onerror() {
         set(emberFileUpload, 'state', 'failed');
+      },
+      onsuccess() {
+        set(emberFileUpload, 'state', 'uploaded');
       }
     }
 
-    return this.startNewUpload(emberFileUpload.blob, options);
+    return this.startNewUpload(emberFileUpload.blob, Object.assign(options, callbacks));
   }
 
 }

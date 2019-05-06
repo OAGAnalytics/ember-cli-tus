@@ -1,5 +1,5 @@
 /** @documenter yuidoc */
-import { action, computed, set, setProperties } from '@ember/object';
+import { action, computed, get, set, setProperties } from '@ember/object';
 import { alias } from '@ember/object/computed';
 import Tus from 'tus-js-client';
 import config from 'ember-get-config';
@@ -68,9 +68,9 @@ export default class EmberTusUpload {
   get status() {
     const { isUploading, isErrored, isSuccess } = this;
 
-    if(isErrored) { return 'Error'; }
-    if(isSuccess) { return 'Success'; }
-    if(isUploading) { return 'In Progress'; }
+    if (isErrored) { return 'Error'; }
+    if (isSuccess) { return 'Success'; }
+    if (isUploading) { return 'In Progress'; }
     return 'Not Started';
   }
 
@@ -88,21 +88,28 @@ export default class EmberTusUpload {
   constructor(file, options) {
     if (!file) { return; }
 
+    const TusUrl = get(config, 'ember-cli-tus.url');
+
+    if (!TusUrl) { throw new Error('No url specified for tus server.'); }
+
+    const RetryDelays = get(config, 'ember-cli-tus.retryDelays') || [0, 3000, 5000, 10000, 20000];
+
     let tusUpload = new Tus.Upload(file, {
-        endpoint: config.EmberTus.url,
+        endpoint: TusUrl,
         metadata: {
-           filename: file.name,
-           filetype: file.type
-       },
-        retryDelays: config.EmberTus.retryDelays || [0, 3000, 5000, 10000, 20000],
+          filename: file.name,
+          filetype: file.type
+        },
+        retryDelays: RetryDelays,
         onError: this._onError,
         onProgress: this._onProgress,
         onSuccess: this._onSuccess,
     });
-      setProperties(this, {
-        tusUpload,
-        options
-      });
+
+    setProperties(this, {
+      tusUpload,
+      options
+    });
   }
 
   @action
@@ -136,6 +143,11 @@ export default class EmberTusUpload {
       isSuccess: true,
       isUploading: false
     });
+
+    if (this.options.onsuccess) {
+      this.options.onsuccess();
+    }
+
     this.deferred.resolve();
   }
 
@@ -149,6 +161,7 @@ export default class EmberTusUpload {
     if (!this.tusUpload) { return }
 
     const deferred = RSVP.defer();
+    deferred.canel = this.abort.bind(this); 
 
     setProperties(this, {
       isUploading: true,
