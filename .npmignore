@@ -4,6 +4,7 @@
 
 # dependencies
 /bower_components/
+/node_modules/
 
 # misc
 /.bowerrc
@@ -20,9 +21,11 @@
 /config/ember-try.js
 /CONTRIBUTING.md
 /ember-cli-build.js
+/libpeerconnection.log
 /testem.js
 /tests/
 /yarn.lock
+/yarn-error.log
 .gitkeep
 
 # ember-try
@@ -30,3 +33,18 @@
 /bower.json.ember-try
 /package.json.ember-try
 /config/addon-docs.js
+
+
+# misc
+/.pnp*
+/.sass-cache
+/connect.lock
+/coverage/
+/npm-debug.log*
+/testem.log
+
+
+#docker
+/docker/
+
+/tus-uploads/
