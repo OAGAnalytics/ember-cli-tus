@@ -9,7 +9,7 @@ export default class Index extends Controller {
   @service tus;
 
   get tusUrl() {
-    return config.EmberTus.url;
+    return config['ember-cli-tus'].url;
   }
 
   @action
