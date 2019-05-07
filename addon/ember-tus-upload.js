@@ -94,12 +94,14 @@ export default class EmberTusUpload {
 
     const RetryDelays = get(config, 'ember-cli-tus.retryDelays') || [0, 3000, 5000, 10000, 20000];
 
+    const metadata = {
+      filename: file.name,
+      filetype: file.type
+    };
+
     let tusUpload = new Tus.Upload(file, {
         endpoint: TusUrl,
-        metadata: {
-          filename: file.name,
-          filetype: file.type
-        },
+        metadata: Object.assign(metadata, options.metadata),
         retryDelays: RetryDelays,
         onError: this._onError,
         onProgress: this._onProgress,
@@ -161,7 +163,7 @@ export default class EmberTusUpload {
     if (!this.tusUpload) { return }
 
     const deferred = RSVP.defer();
-    deferred.canel = this.abort.bind(this); 
+    deferred.canel = this.abort.bind(this);
 
     setProperties(this, {
       isUploading: true,
