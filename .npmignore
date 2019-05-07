@@ -6,6 +6,12 @@
 /bower_components/
 /node_modules/
 
+#docs
+/docs/
+
+#config
+/config/
+
 # misc
 /.bowerrc
 /.editorconfig
@@ -27,6 +33,7 @@
 /yarn.lock
 /yarn-error.log
 .gitkeep
+.esdoc.json
 
 # ember-try
 /.node_modules.ember-try/
