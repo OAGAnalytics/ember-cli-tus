@@ -1,6 +1,8 @@
-# Ember-Tus
+# Ember-Cli-Tus
 
-Ember-Tus is a wrapper for [Tus-Js-Client](https://github.com/tus/tus-js-client) which implements the [Tus](http://tus.io) protocol for resumable uploads over http.  
+`ember install ember-cli-tus`
+
+Ember-Cli-Tus is a wrapper for [Tus-Js-Client](https://github.com/tus/tus-js-client) which implements the [Tus](http://tus.io) protocol for resumable uploads over http.  
 
 For local development you can pull down the tusd docker image by running `yarn tusd:pull` and `yarn tusd:start`.
 
