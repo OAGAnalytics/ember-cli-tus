@@ -1,4 +1,4 @@
-ember-tus
+ember-cli-tus
 ==============================================================================
 
 An emberized wrapper for the tus.js client: https://github.com/tus/tus-js-client
