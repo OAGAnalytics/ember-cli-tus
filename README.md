@@ -25,8 +25,8 @@ Usage
 Addon-Docs:
 https://oaganalytics.github.io/ember-cli-tus/versions/master/
 
-Just add the `tus` service to any route/controller/component and pass browser `File`
-Objects to the `tus.createUpload` or `tus.startNewUpload` method.  Uploads are tracked on the
+Just add the `tus` service to any route/controller/component and pass a browser `File`
+Object to the `tus.createUpload` or `tus.startNewUpload` method.  Uploads are tracked on the
 `tus.uploads` property.
 
 ```
