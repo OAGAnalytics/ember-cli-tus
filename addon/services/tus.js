@@ -56,7 +56,7 @@ export default class TusService extends Service {
     @param options {Object}
     @return {Promise}
   */
-  startNewEmberFileUpload(emberFileUpload, options) {
+  startNewEmberFileUpload(emberFileUpload, options={}) {
 
     const callbacks = {
       onprogress(evt) {

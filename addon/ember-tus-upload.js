@@ -78,6 +78,20 @@ export default class EmberTusUpload {
   @alias('tusUpload.file.size') fileSize;
 
   /**
+    The tusId
+    @property tusId
+    @public
+    @type {String}
+  */
+  @computed('tusUpload.url')
+  get tusId() {
+    if (!this.isSuccess) { return null; }
+
+    let url = get(this, 'tusUpload.url');
+    return url.replace(get(config, 'ember-cli-tus.url'), '');
+  }
+
+  /**
     This method creates a new EmberTusUpload
     @method constructor
     @public
@@ -102,6 +116,7 @@ export default class EmberTusUpload {
     let tusUpload = new Tus.Upload(file, {
         endpoint: TusUrl,
         metadata: Object.assign(metadata, options.metadata),
+        headers: options.headers || {},
         retryDelays: RetryDelays,
         onError: this._onError,
         onProgress: this._onProgress,
@@ -150,7 +165,7 @@ export default class EmberTusUpload {
       this.options.onsuccess();
     }
 
-    this.deferred.resolve();
+    this.deferred.resolve(this);
   }
 
   /**
