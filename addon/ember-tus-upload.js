@@ -88,7 +88,8 @@ export default class EmberTusUpload {
     if (!this.isSuccess) { return null; }
 
     let url = get(this, 'tusUpload.url');
-    return url.replace(get(config, 'ember-cli-tus.url'), '');
+    //get the id off the end of the url
+    return url.replace(/^.*\//, '');
   }
 
   /**
