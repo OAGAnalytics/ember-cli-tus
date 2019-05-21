@@ -73,7 +73,8 @@ export default class TusService extends Service {
         set(emberFileUpload, 'state', 'uploaded');
       }
     }
-
+    
+    set(emberFileUpload, 'state', 'uploading');
     return this.startNewUpload(emberFileUpload.blob, Object.assign(options, callbacks));
   }
 

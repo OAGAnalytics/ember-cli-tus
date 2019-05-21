@@ -179,7 +179,7 @@ export default class EmberTusUpload {
     if (!this.tusUpload) { return }
 
     const deferred = RSVP.defer();
-    deferred.canel = this.abort.bind(this);
+    deferred.promise.cancel = this.abort.bind(this);
 
     setProperties(this, {
       isUploading: true,
