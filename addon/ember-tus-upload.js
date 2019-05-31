@@ -100,29 +100,34 @@ export default class EmberTusUpload {
     @param {Object} options
     @return {EmberTusUpload}
    */
-  constructor(file, options) {
+  constructor(file, options = {}) {
     if (!file) { return; }
 
-    const TusUrl = get(config, 'ember-cli-tus.url');
+    const endpoint = get(config, 'ember-cli-tus.url');
 
-    if (!TusUrl) { throw new Error('No url specified for tus server.'); }
+    if (!endpoint) { throw new Error('No url specified for tus server.'); }
 
-    const RetryDelays = get(config, 'ember-cli-tus.retryDelays') || [0, 3000, 5000, 10000, 20000];
+    const retryDelays = get(config, 'ember-cli-tus.retryDelays') || [0, 3000, 5000, 10000, 20000];
 
-    const metadata = {
-      filename: file.name,
-      filetype: file.type
-    };
+    const chunkSize = get(config, 'ember-cli-tus.chunkSize') || 100*1024*1024;
 
-    let tusUpload = new Tus.Upload(file, {
-        endpoint: TusUrl,
-        metadata: Object.assign(metadata, options.metadata),
-        headers: options.headers || {},
-        retryDelays: RetryDelays,
+    if (!get(options, 'metadata.filename')) {
+      options.metadata = {
+        filename: file.name,
+        filetype: file.type
+      };
+    }
+
+    let tusOptions = Object.assign({
+        endpoint,
+        retryDelays,
+        chunkSize,
         onError: this._onError,
         onProgress: this._onProgress,
         onSuccess: this._onSuccess,
-    });
+    }, options);
+
+    let tusUpload = new Tus.Upload(file, tusOptions);
 
     setProperties(this, {
       tusUpload,
