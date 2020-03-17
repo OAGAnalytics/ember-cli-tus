@@ -8,7 +8,9 @@ Based on the tus.io protocol: https://tus.io/
 Compatibility
 ------------------------------------------------------------------------------
 
-* Ember.js 3.9
+* Ember.js v3.12 or above
+* Ember CLI v2.13 or above
+* Node.js v10 or above
 
 
 Installation
